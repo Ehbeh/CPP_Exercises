@@ -2,9 +2,16 @@
 
 class Plush{
 
+
     public:
         Plush()
             : _cost{10} {
+
+            }
+
+    public:
+        Plush(int cost)
+            : _cost{cost} {
 
             }
 
