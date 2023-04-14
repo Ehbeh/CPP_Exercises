@@ -6,17 +6,23 @@
 
 // A PC is the place where Pokemons get automagically sent when the trainer's pockets are full.
 // When a Pokemon is transferred to the PC, this one takes ownership.
-class PC
-{
+
+class PC{
+
     public:
-         PC();
-         std::vector<PokemonPtr> pokemons(){
-            return _pokemons;
-         }
 
-         void transfer(PokemonPtr pokemon);
+        bool empty(){
+            return _lst.size() == 0;
+        }
 
+        const std::vector<PokemonPtr> &pokemons() const{
+            return _lst;
+        }
+
+        void transfer(PokemonPtr pokemon){
+            _lst.emplace_back(std::move(pokemon));
+        }
 
     private:
-        std::vector<PokemonPtr> _pokemons;
+        std::vector<PokemonPtr> _lst;
 };
